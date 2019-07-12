@@ -1,32 +1,27 @@
-package com.lfaiska.velazques.domain.entity;
+package com.lfaiska.velazques.rest_presentation.entity;
+
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.util.Date;
 import java.util.List;
 
-public class SaleModel {
-    private String code;
+@JsonInclude(JsonInclude.Include.NON_NULL)
+public class SaleResponse {
+    @JsonProperty("data")
     private Date date;
+    @JsonProperty("cliente")
     private int customerId;
-    private List<ItemModel> itens;
+    @JsonProperty("itens")
+    private List<ItemResponse> items;
+    @JsonProperty("valorTotal")
     private Double totalValue;
 
-    public SaleModel() {
-    }
-
-    public SaleModel(String code, Date date, int customerId, List<ItemModel> itens, Double totalValue) {
-        this.code = code;
+    public SaleResponse(Date date, int customerId, List<ItemResponse> items, Double totalValue) {
         this.date = date;
         this.customerId = customerId;
-        this.itens = itens;
+        this.items = items;
         this.totalValue = totalValue;
-    }
-
-    public String getCode() {
-        return code;
-    }
-
-    public void setCode(String code) {
-        this.code = code;
     }
 
     public Date getDate() {
@@ -45,12 +40,12 @@ public class SaleModel {
         this.customerId = customerId;
     }
 
-    public List<ItemModel> getItens() {
-        return itens;
+    public List<ItemResponse> getItems() {
+        return items;
     }
 
-    public void setItens(List<ItemModel> itens) {
-        this.itens = itens;
+    public void setItems(List<ItemResponse> items) {
+        this.items = items;
     }
 
     public Double getTotalValue() {
@@ -63,11 +58,10 @@ public class SaleModel {
 
     @Override
     public String toString() {
-        return "SaleModel{" +
-                "code='" + code + '\'' +
-                ", date=" + date +
+        return "SaleResponse{" +
+                "date=" + date +
                 ", customerId=" + customerId +
-                ", itens=" + itens +
+                ", items=" + items +
                 ", totalValue=" + totalValue +
                 '}';
     }

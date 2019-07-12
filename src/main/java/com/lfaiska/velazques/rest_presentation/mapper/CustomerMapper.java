@@ -5,6 +5,6 @@ import com.lfaiska.velazques.rest_presentation.entity.CustomerResponse;
 
 public class CustomerMapper {
     public static CustomerResponse dtoToResponse(CustomerDto dto) {
-        return new CustomerResponse(dto.getName(), dto.getDocument(), dto.getTotalPurchase());
+        return new CustomerResponse(dto.getName(), dto.getDocument(), dto.getTotalPurchaseHistory());
     }
 }

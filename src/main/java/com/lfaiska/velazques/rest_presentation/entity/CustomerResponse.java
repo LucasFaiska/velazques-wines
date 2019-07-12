@@ -1,17 +1,24 @@
 package com.lfaiska.velazques.rest_presentation.entity;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class CustomerResponse {
+    @JsonProperty("nome")
     private String name;
+    @JsonProperty("cpf")
     private String document;
-    private Double totalPurchase;
+    @JsonProperty("totalCompras")
+    private Double totalPurchaseHistory;
 
     public CustomerResponse() {
     }
 
-    public CustomerResponse(String name, String document, Double totalPurchase) {
+    public CustomerResponse(String name, String document, Double totalPurchaseHistory) {
         this.name = name;
         this.document = document;
-        this.totalPurchase = totalPurchase;
+        this.totalPurchaseHistory = totalPurchaseHistory;
     }
 
     public String getName() {
@@ -30,12 +37,12 @@ public class CustomerResponse {
         this.document = document;
     }
 
-    public Double getTotalPurchase() {
-        return totalPurchase;
+    public Double getTotalPurchaseHistory() {
+        return totalPurchaseHistory;
     }
 
-    public void setTotalPurchase(Double totalPurchase) {
-        this.totalPurchase = totalPurchase;
+    public void setTotalPurchaseHistory(Double totalPurchaseHistory) {
+        this.totalPurchaseHistory = totalPurchaseHistory;
     }
 
     @Override
@@ -43,7 +50,7 @@ public class CustomerResponse {
         return "CustomerResponse{" +
                 "name='" + name + '\'' +
                 ", document='" + document + '\'' +
-                ", totalPurchase=" + totalPurchase +
+                ", totalPurchaseHistory=" + totalPurchaseHistory +
                 '}';
     }
 }

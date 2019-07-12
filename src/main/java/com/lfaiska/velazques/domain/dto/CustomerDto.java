@@ -3,12 +3,17 @@ package com.lfaiska.velazques.domain.dto;
 public class CustomerDto {
     private String name;
     private String document;
-    private Double totalPurchase;
+    private Double totalPurchaseHistory;
 
-    public CustomerDto(String name, String document, Double totalPurchase) {
+    public CustomerDto(String name, String document) {
         this.name = name;
         this.document = document;
-        this.totalPurchase = totalPurchase;
+    }
+
+    public CustomerDto(String name, String document, Double totalPurchaseHistory) {
+        this.name = name;
+        this.document = document;
+        this.totalPurchaseHistory = totalPurchaseHistory;
     }
 
     public String getName() {
@@ -27,11 +32,20 @@ public class CustomerDto {
         this.document = document;
     }
 
-    public Double getTotalPurchase() {
-        return totalPurchase;
+    public Double getTotalPurchaseHistory() {
+        return totalPurchaseHistory;
     }
 
-    public void setTotalPurchase(Double totalPurchase) {
-        this.totalPurchase = totalPurchase;
+    public void setTotalPurchaseHistory(Double totalPurchaseHistory) {
+        this.totalPurchaseHistory = totalPurchaseHistory;
+    }
+
+    @Override
+    public String toString() {
+        return "CustomerDto{" +
+                "name='" + name + '\'' +
+                ", document='" + document + '\'' +
+                ", totalPurchaseHistory=" + totalPurchaseHistory +
+                '}';
     }
 }
