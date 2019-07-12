@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/velazques-wines.iml" filepath="$PROJECT_DIR$/.idea/modules/velazques-wines.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/velazques-wines_main.iml" filepath="$PROJECT_DIR$/.idea/modules/velazques-wines_main.iml" group="velazques-wines" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/velazques-wines_test.iml" filepath="$PROJECT_DIR$/.idea/modules/velazques-wines_test.iml" group="velazques-wines" />
+    </modules>
+  </component>
+</project>
