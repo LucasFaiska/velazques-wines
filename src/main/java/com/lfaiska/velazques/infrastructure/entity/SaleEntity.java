@@ -10,7 +10,7 @@ public class SaleEntity {
     @JsonProperty("data")
     private String date;
     @JsonProperty("cliente")
-    private String clientId;
+    private String customerId;
     @JsonProperty("itens")
     private List<ItemEntity> itemEntities;
     @JsonProperty("valorTotal")
@@ -19,10 +19,10 @@ public class SaleEntity {
     public SaleEntity() {
     }
 
-    public SaleEntity(String code, String date, String clientId, List<ItemEntity> itemEntities, Double totalValue) {
+    public SaleEntity(String code, String date, String customerId, List<ItemEntity> itemEntities, Double totalValue) {
         this.code = code;
         this.date = date;
-        this.clientId = clientId;
+        this.customerId = customerId;
         this.itemEntities = itemEntities;
         this.totalValue = totalValue;
     }
@@ -43,12 +43,12 @@ public class SaleEntity {
         this.date = date;
     }
 
-    public String getClientId() {
-        return clientId;
+    public String getCustomerId() {
+        return customerId;
     }
 
-    public void setClientId(String clientId) {
-        this.clientId = clientId;
+    public void setCustomerId(String customerId) {
+        this.customerId = customerId;
     }
 
     public List<ItemEntity> getItemEntities() {
@@ -72,7 +72,7 @@ public class SaleEntity {
         return "Sale{" +
                 "code='" + code + '\'' +
                 ", date='" + date + '\'' +
-                ", clientId='" + clientId + '\'' +
+                ", customerId='" + customerId + '\'' +
                 ", itemEntities=" + itemEntities +
                 ", totalValue=" + totalValue +
                 '}';

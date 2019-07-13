@@ -1,6 +1,5 @@
 package com.lfaiska.velazques.domain.mapper;
 
-import com.lfaiska.velazques.domain.dto.ItemDto;
 import com.lfaiska.velazques.domain.dto.SaleDto;
 import com.lfaiska.velazques.domain.entity.SaleModel;
 import com.lfaiska.velazques.infrastructure.entity.SaleEntity;
@@ -24,7 +23,7 @@ public class SaleMapper {
     public static SaleModel entityToModel(SaleEntity entity) {
         return new SaleModel(entity.getCode(),
                 dateFromString(entity.getDate()),
-                Integer.parseInt(entity.getClientId().replace(".","")),
+                Integer.parseInt(entity.getCustomerId().replace(".","")),
                 entity.getItemEntities().stream().map(ItemMapper::entityToModel).collect(Collectors.toList()),
                 entity.getTotalValue());
     }

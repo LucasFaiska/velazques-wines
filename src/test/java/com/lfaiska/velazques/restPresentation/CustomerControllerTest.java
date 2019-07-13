@@ -8,7 +8,6 @@ import com.lfaiska.velazques.domain.exceptions.NotFoundRegisterException;
 import com.lfaiska.velazques.domain.service.CustomerService;
 import com.lfaiska.velazques.restPresentation.controller.CustomerController;
 import com.lfaiska.velazques.restPresentation.entity.CustomerListResponse;
-import com.lfaiska.velazques.restPresentation.entity.CustomerResponse;
 import com.lfaiska.velazques.restPresentation.entity.PurchaseResponse;
 import org.junit.Assert;
 import org.junit.Test;
