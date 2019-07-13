@@ -1,7 +1,7 @@
-package com.lfaiska.velazques.rest_presentation.mapper;
+package com.lfaiska.velazques.restPresentation.mapper;
 
 import com.lfaiska.velazques.domain.dto.PurchaseDto;
-import com.lfaiska.velazques.rest_presentation.entity.PurchaseResponse;
+import com.lfaiska.velazques.restPresentation.entity.PurchaseResponse;
 
 public class PurchaseMapper {
     public static PurchaseResponse dtoToResponse(PurchaseDto dto) {

@@ -4,6 +4,7 @@ public class CustomerDto {
     private String name;
     private String document;
     private Double totalPurchaseHistory;
+    private int purchaseCount;
 
     public CustomerDto(String name, String document) {
         this.name = name;
@@ -14,6 +15,12 @@ public class CustomerDto {
         this.name = name;
         this.document = document;
         this.totalPurchaseHistory = totalPurchaseHistory;
+    }
+
+    public CustomerDto(String name, String document, int purchaseCount) {
+        this.name = name;
+        this.document = document;
+        this.purchaseCount = purchaseCount;
     }
 
     public String getName() {
@@ -40,12 +47,21 @@ public class CustomerDto {
         this.totalPurchaseHistory = totalPurchaseHistory;
     }
 
+    public int getPurchaseCount() {
+        return purchaseCount;
+    }
+
+    public void setPurchaseCount(int purchaseCount) {
+        this.purchaseCount = purchaseCount;
+    }
+
     @Override
     public String toString() {
         return "CustomerDto{" +
                 "name='" + name + '\'' +
                 ", document='" + document + '\'' +
                 ", totalPurchaseHistory=" + totalPurchaseHistory +
+                ", purchaseCount=" + purchaseCount +
                 '}';
     }
 }

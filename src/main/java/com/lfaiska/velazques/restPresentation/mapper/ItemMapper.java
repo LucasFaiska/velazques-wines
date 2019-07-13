@@ -1,8 +1,8 @@
-package com.lfaiska.velazques.rest_presentation.mapper;
+package com.lfaiska.velazques.restPresentation.mapper;
 
 
 import com.lfaiska.velazques.domain.dto.ItemDto;
-import com.lfaiska.velazques.rest_presentation.entity.ItemResponse;
+import com.lfaiska.velazques.restPresentation.entity.ItemResponse;
 
 public class ItemMapper {
     public static ItemResponse dtoToResponse(ItemDto dto) {

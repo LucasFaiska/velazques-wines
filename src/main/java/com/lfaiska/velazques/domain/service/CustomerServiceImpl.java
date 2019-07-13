@@ -74,4 +74,18 @@ public class CustomerServiceImpl implements CustomerService {
 
         return new PurchaseDto(customerWithMostGreaterPurchase, greaterSaleInYear);
     }
+
+    private int getCustomerPurchaseCount(int customerId, List<SaleModel> sales) {
+        return sales.stream().filter(sale -> sale.getCustomerId() == customerId).collect(Collectors.toList()).size();
+    }
+
+    @Override
+    public List<CustomerDto> getLoyalCustomers() {
+        List<CustomerModel> customerModelList = fetchCustomers();
+        List<SaleModel> saleModelList = fetchSales();
+
+        return customerModelList.stream().map(customer ->
+                CustomerMapper.modelToDto(customer, getCustomerPurchaseCount(customer.getId(), saleModelList))
+        ).sorted(Comparator.comparing(CustomerDto::getPurchaseCount).reversed()).collect(Collectors.toList());
+    }
 }

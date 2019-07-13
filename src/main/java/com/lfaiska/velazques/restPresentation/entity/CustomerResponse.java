@@ -1,4 +1,4 @@
-package com.lfaiska.velazques.rest_presentation.entity;
+package com.lfaiska.velazques.restPresentation.entity;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -11,14 +11,17 @@ public class CustomerResponse {
     private String document;
     @JsonProperty("totalCompras")
     private Double totalPurchaseHistory;
+    @JsonProperty("quantidadeCompras")
+    private int purchaseCount;
 
     public CustomerResponse() {
     }
 
-    public CustomerResponse(String name, String document, Double totalPurchaseHistory) {
+    public CustomerResponse(String name, String document, Double totalPurchaseHistory, int purchaseCount) {
         this.name = name;
         this.document = document;
         this.totalPurchaseHistory = totalPurchaseHistory;
+        this.purchaseCount = purchaseCount;
     }
 
     public String getName() {
@@ -45,12 +48,21 @@ public class CustomerResponse {
         this.totalPurchaseHistory = totalPurchaseHistory;
     }
 
+    public int getPurchaseCount() {
+        return purchaseCount;
+    }
+
+    public void setPurchaseCount(int purchaseCount) {
+        this.purchaseCount = purchaseCount;
+    }
+
     @Override
     public String toString() {
         return "CustomerResponse{" +
                 "name='" + name + '\'' +
                 ", document='" + document + '\'' +
                 ", totalPurchaseHistory=" + totalPurchaseHistory +
+                ", purchaseCount=" + purchaseCount +
                 '}';
     }
 }

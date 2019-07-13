@@ -16,4 +16,8 @@ public class CustomerMapper {
     public static CustomerDto modelToDto(CustomerModel model, Double totalPurchaseHistory) {
         return new CustomerDto(model.getName(), model.getDocument(), totalPurchaseHistory);
     }
+
+    public static CustomerDto modelToDto(CustomerModel model, int purchaseCount) {
+        return new CustomerDto(model.getName(), model.getDocument(), purchaseCount);
+    }
 }

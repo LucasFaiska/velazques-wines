@@ -1,4 +1,4 @@
-package com.lfaiska.velazques.rest_presentation.entity;
+package com.lfaiska.velazques.restPresentation.entity;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;

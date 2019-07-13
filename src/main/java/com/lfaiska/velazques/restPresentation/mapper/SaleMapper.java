@@ -1,7 +1,7 @@
-package com.lfaiska.velazques.rest_presentation.mapper;
+package com.lfaiska.velazques.restPresentation.mapper;
 
 import com.lfaiska.velazques.domain.dto.SaleDto;
-import com.lfaiska.velazques.rest_presentation.entity.SaleResponse;
+import com.lfaiska.velazques.restPresentation.entity.SaleResponse;
 
 import java.util.stream.Collectors;
 

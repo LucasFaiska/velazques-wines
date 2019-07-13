@@ -1,10 +1,10 @@
-package com.lfaiska.velazques.rest_presentation.controller;
+package com.lfaiska.velazques.restPresentation.controller;
 
 import com.lfaiska.velazques.domain.service.CustomerService;
-import com.lfaiska.velazques.rest_presentation.entity.CustomerListResponse;
-import com.lfaiska.velazques.rest_presentation.entity.PurchaseResponse;
-import com.lfaiska.velazques.rest_presentation.mapper.CustomerMapper;
-import com.lfaiska.velazques.rest_presentation.mapper.PurchaseMapper;
+import com.lfaiska.velazques.restPresentation.entity.CustomerListResponse;
+import com.lfaiska.velazques.restPresentation.entity.PurchaseResponse;
+import com.lfaiska.velazques.restPresentation.mapper.CustomerMapper;
+import com.lfaiska.velazques.restPresentation.mapper.PurchaseMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -30,10 +30,16 @@ public class CustomerController {
                 .stream().map(CustomerMapper::dtoToResponse).collect(Collectors.toList()));
     }
 
-    @GetMapping("/customers/purchase/greater/{year}")
+    @GetMapping("/customers/purchases/greater/{year}")
     @ResponseBody
-    public PurchaseResponse getClientWithGreaterPurchase(@PathVariable String year) {
+    public PurchaseResponse getCustomertWithGreaterPurchase(@PathVariable String year) {
         return PurchaseMapper.dtoToResponse(customerService.getCustomerWithMostGreaterPurchaseInYear(Integer.parseInt(year)));
+    }
+
+    @GetMapping("/customers/loyal")
+    @ResponseBody
+    public CustomerListResponse getLoyalCustomers() {
+        return new CustomerListResponse(customerService.getLoyalCustomers().stream().map(CustomerMapper::dtoToResponse).collect(Collectors.toList()));
     }
 
 }
