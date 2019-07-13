@@ -6,6 +6,9 @@ public class CustomerDto {
     private Double totalPurchaseHistory;
     private int purchaseCount;
 
+    public CustomerDto() {
+    }
+
     public CustomerDto(String name, String document) {
         this.name = name;
         this.document = document;

@@ -5,16 +5,14 @@ import com.lfaiska.velazques.domain.dto.PurchaseDto;
 import com.lfaiska.velazques.domain.dto.SaleDto;
 import com.lfaiska.velazques.domain.entity.CustomerModel;
 import com.lfaiska.velazques.domain.entity.SaleModel;
+import com.lfaiska.velazques.domain.exceptions.NotFoundRegisterException;
 import com.lfaiska.velazques.domain.mapper.CustomerMapper;
 import com.lfaiska.velazques.domain.mapper.SaleMapper;
 import com.lfaiska.velazques.infrastructure.repository.CustomerRepository;
 import com.lfaiska.velazques.infrastructure.repository.SaleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import java.util.Calendar;
-import java.util.Comparator;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class CustomerServiceImpl implements CustomerService {
@@ -59,20 +57,23 @@ public class CustomerServiceImpl implements CustomerService {
         return calendar.get(Calendar.YEAR) == year;
     }
 
-    public PurchaseDto getCustomerWithMostGreaterPurchaseInYear(int year) {
+    public PurchaseDto getCustomerWithMostGreaterPurchaseInYear(int year) throws NotFoundRegisterException {
         List<CustomerModel> customerModelList = fetchCustomers();
         List<SaleModel> saleModelList = fetchSales();
 
-        SaleDto greaterSaleInYear = SaleMapper.modelToDto(
-                saleModelList.stream().filter(sale ->
-                        isDateInYear(year, sale.getDate())
-                ).max(Comparator.comparing(SaleModel::getTotalValue)).get()
-        );
+        Optional<SaleModel> greaterSaleInYear = saleModelList.stream().filter(sale ->
+                isDateInYear(year, sale.getDate())
+        ).max(Comparator.comparing(SaleModel::getTotalValue));
 
-        CustomerDto customerWithMostGreaterPurchase = CustomerMapper.modelToDto(customerModelList.stream()
-                .filter(customer -> customer.getId() == greaterSaleInYear.getCustomerId()).findFirst().get());
+        if (greaterSaleInYear.isPresent()) {
+            CustomerModel customerWithMostGreaterPurchase = customerModelList.stream()
+                    .filter(customer -> customer.getId() == greaterSaleInYear.get().getCustomerId()).findFirst().get();
 
-        return new PurchaseDto(customerWithMostGreaterPurchase, greaterSaleInYear);
+            return new PurchaseDto(CustomerMapper.modelToDto(customerWithMostGreaterPurchase),
+                    SaleMapper.modelToDto(greaterSaleInYear.get()));
+        } else {
+            throw new NotFoundRegisterException();
+        }
     }
 
     private int getCustomerPurchaseCount(int customerId, List<SaleModel> sales) {

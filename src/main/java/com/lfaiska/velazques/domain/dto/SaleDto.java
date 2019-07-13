@@ -9,6 +9,9 @@ public class SaleDto {
     private List<ItemDto> items;
     private Double totalValue;
 
+    public SaleDto() {
+    }
+
     public SaleDto(Date date, int customerId, List<ItemDto> items, Double totalValue) {
         this.date = date;
         this.customerId = customerId;

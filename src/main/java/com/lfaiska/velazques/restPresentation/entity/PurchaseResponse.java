@@ -10,6 +10,10 @@ public class PurchaseResponse {
     @JsonProperty("compra")
     private SaleResponse sale;
 
+    public PurchaseResponse() {
+
+    }
+
     public PurchaseResponse(CustomerResponse customer, SaleResponse sale) {
         this.customer = customer;
         this.sale = sale;
